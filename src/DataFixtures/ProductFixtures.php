@@ -1,0 +1,29 @@
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\Product;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Persistence\ObjectManager;
+;
+
+class ProductFixtures extends Fixture implements DependentFixtureInterface
+{
+    public function load(ObjectManager $manager): void
+    {
+    $product = new Product();
+    $product->setTitle('ane en peluche');
+    $product->setCategory($this->getReference('TOYS'));
+    $manager->persist($product);
+
+    $manager->flush();
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            CategoryFixtures::class,
+        ];
+    }
+}
