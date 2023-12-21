@@ -14,7 +14,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
     {
     $product = new Product();
     $product->setTitle('ane en peluche');
-    $product->setCategory($this->getReference('TOYS'));
+    $product->setCategory($this->getReference(CategoryFixtures::CATEGORY_TOYS));
     $manager->persist($product);
 
     $manager->flush();

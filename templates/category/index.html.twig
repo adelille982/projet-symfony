@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories
+{% endblock %}
+
+{% block body %}
+
+<h1>Liste des catégories</h1>
+    <a href="{{ path('app_categories_new') }}">Nouvelle catégorie</a>
+
+{% for category in categories %}
+	<h2>
+    <a href="{{ path('app_categories_show', { id: category.id }) }}">{{category.name}}</a>
+    </h2>
+
+	{% if category.parent %}
+	    <p>Enfant de {{category.parent.name}}</p>
+    {% endif %}
+{% endfor %}
+{% endblock %}
