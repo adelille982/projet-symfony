@@ -6,7 +6,7 @@
 {% block body %}
 
 <h1>Liste des catégories</h1>
-    <a href="{{ path('app_categories_new') }}">Nouvelle catégorie</a>
+    <a class="btn btn-primary" href="{{ path('app_categories_new') }}">Nouvelle catégorie</a>
 
 {% for category in categories %}
 	<h2>
@@ -17,4 +17,8 @@
 	    <p>Enfant de {{category.parent.name}}</p>
     {% endif %}
 {% endfor %}
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(categories) }}
+</div>
 {% endblock %}
